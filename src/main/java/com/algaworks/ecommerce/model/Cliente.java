@@ -24,6 +24,6 @@ public class Cliente {
     @Enumerated(EnumType.STRING)
     private SexoCliente sexo;
 
-    @OneToMany(mappedBy = "clienteid")
+    @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos;
 }

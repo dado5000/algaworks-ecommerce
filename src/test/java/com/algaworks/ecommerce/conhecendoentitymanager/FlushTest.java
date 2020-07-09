@@ -14,7 +14,7 @@ public class FlushTest extends EntityManagerTest {
             entityManager.getTransaction().begin();
 
             Pedido pedido = entityManager.find(Pedido.class, 1);
-            pedido.setStatus(StatusPedido.PAGO);
+            pedido.setStatusPedido(StatusPedido.PAGO);
 
             /* persistencia forçada mesmo se houver rolback */
             entityManager.flush();

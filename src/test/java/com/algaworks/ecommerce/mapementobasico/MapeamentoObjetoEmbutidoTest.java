@@ -27,12 +27,12 @@ public class MapeamentoObjetoEmbutidoTest extends EntityManagerTest {
 
         Pedido pedido = new Pedido();
         // pedido.setId(1); NÃO NECESSÁRIO DEVIDO ESTRATEGIA IDENTITY
-        pedido.setDataPedido(LocalDateTime.now());
+        pedido.setDataCriacao(LocalDateTime.now());
         pedido.setStatusPedido(StatusPedido.AGUARDANDO);
         pedido.setTotal(new BigDecimal(1000));
 
         pedido.setEnderecoEntrega(endereco);
-        pedido.setClienteid(cliente);
+        pedido.setCliente(cliente);
 
         entityManager.getTransaction().begin();
         entityManager.persist(pedido);

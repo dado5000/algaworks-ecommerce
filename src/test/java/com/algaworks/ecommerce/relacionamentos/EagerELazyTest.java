@@ -12,7 +12,7 @@ public class EagerELazyTest extends EntityManagerTest {
     public void verficarComportamento() {
         Pedido pedido = entityManager.find(Pedido.class, 1);
 
-        System.out.println(pedido.getClienteid().getNome());
+        System.out.println(pedido.getCliente().getNome());
 
         for (int i = 0; i < pedido.getItensPedido().size(); i++ ) {
             System.out.println(

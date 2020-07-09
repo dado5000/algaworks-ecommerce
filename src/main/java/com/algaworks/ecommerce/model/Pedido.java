@@ -25,10 +25,13 @@ public class Pedido {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "cliente_id")
-    private Cliente clienteid;
+    private Cliente cliente;
 
-    @Column(name = "data_pedido")
-    private LocalDateTime dataPedido;
+    @Column(name = "data_criacao")
+    private LocalDateTime dataCriacao;
+
+    @Column(name = "data_ultima_atualizacao")
+    private LocalDateTime dataUltimaAtualizacao;
 
     @Column(name = "data_conclusao")
     private LocalDateTime dataConclusao;
@@ -49,4 +52,50 @@ public class Pedido {
 
     @OneToOne(mappedBy = "pedido")
     private PagamentoCartao pagamento;
+
+    @PrePersist
+    public void aoPersistir() {
+        dataCriacao = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void aoAtualiar() {
+        dataUltimaAtualizacao = LocalDateTime.now();
+    }
+
+    //    @PrePersist
+//    @PreUpdate
+    public void calcularTotal() {
+        if (itensPedido != null) {
+            total = itensPedido.stream().map(ItemPedido::getPrecoProduto)
+                    .reduce(BigDecimal.ZERO, BigDecimal::add);
+        }
+    }
+
+    @PostPersist
+    public void aposPersistir() {
+        System.out.println("Após persistir Pedido.");
+        calcularTotal();
+    }
+
+    @PostUpdate
+    public void aposAtualizar() {
+        System.out.println("Após atualizar Pedido.");
+        calcularTotal();
+    }
+
+    @PreRemove
+    public void aoRemover() {
+        System.out.println("Antes de remover Pedido.");
+    }
+
+    @PostRemove
+    public void aposRemover() {
+        System.out.println("Após remover Pedido.");
+    }
+
+    @PostLoad
+    public void aoCarregar() {
+        System.out.println("Após carregar o Pedido.");
+    }
 }
