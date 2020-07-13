@@ -13,23 +13,15 @@ import java.math.BigDecimal;
 @Table(name = "item_pedido")
 public class ItemPedido {
 
-    @EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-//    @Column(name = "pedido_id")
-//    private Integer pedidoId;
+    @EmbeddedId
+    private ItemPedidoId id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "pedido_id")
+    @JoinColumn(name = "pedido_id", insertable = false, updatable = false)
     private Pedido pedidoid;
 
-//    @Column(name = "produto_id")
-//    private Integer produtoId;
-
     @ManyToOne(optional = false)
-    @JoinColumn(name = "produto_id")
+    @JoinColumn(name = "produto_id", insertable = false, updatable = false)
     private Produto produtoid;
 
     @Column(name = "preco_produto")
@@ -38,4 +30,8 @@ public class ItemPedido {
     private Integer quantidade;
 
 
+//    @Column(name = "produto_id")
+//    private Integer produtoId; SEM RELACIONAMENTO
+//    @Column(name = "pedido_id")
+//    private Integer pedidoId; SEM RELACIONAMENTO
 }
