@@ -11,16 +11,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @EntityListeners({ GenericoListener.class })
 @Entity
 @Table(name = "produto")
-public class Produto {
-
-    @EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Produto extends EntidadeBaseInteger {
 
     /* updatable = false garante que esse valor nunca mais seja atualizado */
     @Column(name = "data_criacao", updatable = false)

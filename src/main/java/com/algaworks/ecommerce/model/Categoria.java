@@ -8,18 +8,9 @@ import javax.persistence.*;
 import java.util.List;
 
 @Getter @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "categoria")
-public class Categoria {
-
-    @Id
-    @EqualsAndHashCode.Include
-    /* Aula 3.8 Gereção e ID por sequencia GenerationType.SEQUENCE
-    * GenerationType.TABLE criar uma tabela com sequecias das entidades
-    */
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Categoria extends EntidadeBaseInteger {
 
     private String nome;
 

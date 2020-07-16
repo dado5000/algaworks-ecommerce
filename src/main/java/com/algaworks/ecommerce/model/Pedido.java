@@ -13,15 +13,9 @@ import java.util.List;
 
 @Getter @Setter
 @EntityListeners({ GerarNotaFiscalListener.class, GenericoListener.class })
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "pedido")
-public class Pedido {
-
-    @EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Pedido extends EntidadeBaseInteger {
 
 //    @Column(name = "cliente_id") sem relacionamento
 //    private Integer clienteid;
