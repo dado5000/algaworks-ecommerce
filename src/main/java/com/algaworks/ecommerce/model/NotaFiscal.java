@@ -27,7 +27,8 @@ public class NotaFiscal {
     @JoinColumn(name = "pedido_id") // DONO DA RELAÇÃO Owner
     private Pedido pedido;
 
-    private String xml;
+    @Lob
+    private byte[] xml;
 
     @Column(name = "data_emissao")
     private Date dataEmissao;
