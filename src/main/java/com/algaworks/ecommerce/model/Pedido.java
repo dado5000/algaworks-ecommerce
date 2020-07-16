@@ -48,7 +48,7 @@ public class Pedido extends EntidadeBaseInteger {
     private List<ItemPedido> itensPedido;
 
     @OneToOne(mappedBy = "pedido")
-    private PagamentoCartao pagamento;
+    private Pagamento pagamento;
 
     public boolean isPago() {
         return StatusPedido.PAGO.equals(statusPedido);
