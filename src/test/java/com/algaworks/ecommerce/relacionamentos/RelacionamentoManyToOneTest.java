@@ -12,6 +12,7 @@ public class RelacionamentoManyToOneTest extends EntityManagerTest {
 
     @Test
     public void verificarRelacionamento() {
+        entityManager.getTransaction().begin();
         Cliente cliente = entityManager.find(Cliente.class, 1);
 
         Pedido pedido = new Pedido();
@@ -21,7 +22,7 @@ public class RelacionamentoManyToOneTest extends EntityManagerTest {
         pedido.setTotal(BigDecimal.TEN);
 
         entityManager.persist(pedido);
-        getTransacao();
+        entityManager.getTransaction().commit();
 
         entityManager.clear();
 
@@ -31,6 +32,7 @@ public class RelacionamentoManyToOneTest extends EntityManagerTest {
 
     @Test
     public void verificandoRelacionamentoItemPedido() {
+        entityManager.getTransaction().begin();
         Cliente cliente = entityManager.find(Cliente.class, 1);
         Produto produto = entityManager.find(Produto.class, 1);
 
@@ -56,7 +58,7 @@ public class RelacionamentoManyToOneTest extends EntityManagerTest {
 
         entityManager.persist(pedido);
         entityManager.persist(itemPedido);
-        getTransacao();
+        entityManager.getTransaction().commit();
 
         entityManager.clear();
 
@@ -68,8 +70,4 @@ public class RelacionamentoManyToOneTest extends EntityManagerTest {
 
     }
 
-    public void getTransacao(){
-        entityManager.getTransaction().begin();
-        entityManager.getTransaction().commit();
-    }
 }

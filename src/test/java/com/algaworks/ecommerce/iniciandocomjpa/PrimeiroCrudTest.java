@@ -2,6 +2,7 @@ package com.algaworks.ecommerce.iniciandocomjpa;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Cliente;
+import com.algaworks.ecommerce.model.SexoCliente;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,6 +14,8 @@ public class PrimeiroCrudTest extends EntityManagerTest {
 
         // cliente.setId(3); Não é necessário na asserção para operação de remoção.
         cliente.setNome("Maria das Graças Leitão");
+        cliente.setCpf("99999999999999");
+        cliente.setSexo(SexoCliente.MASCULINO);
 
         entityManager.persist(cliente);
         getTransacao();
@@ -37,6 +40,8 @@ public class PrimeiroCrudTest extends EntityManagerTest {
 
         String novoNome = "Patricia Vedolim de Andrade";
         cliente.setNome(novoNome);
+        cliente.setCpf("99999");
+        cliente.setSexo(SexoCliente.FEMININO);
 
         getTransacao();
 
@@ -55,6 +60,8 @@ public class PrimeiroCrudTest extends EntityManagerTest {
         String novoNome = "Thiago Leite";
 
         cliente.setNome(novoNome);
+        cliente.setSexo(SexoCliente.MASCULINO);
+        cliente.setCpf("88888888888888");
         getTransacao();
 
         entityManager.clear();

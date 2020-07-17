@@ -11,6 +11,6 @@ import javax.persistence.*;
 @DiscriminatorValue("cartao")
 public class PagamentoCartao extends Pagamento {
 
-    @Column(name = "numero_cartao")
+    @Column(name = "numero_cartao", length = 100)
     private String numeroCartao;
 }

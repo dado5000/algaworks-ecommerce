@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class OperacoesComTransacaoTest extends EntityManagerTest {
 
@@ -15,6 +16,7 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
 
         // produtoPersist.setId(5); NÃO USADO COM estratégia IDENTITY no id
         produtoPersist.setNome("Smartphone One Plus");
+        produtoPersist.setDataCriacao(LocalDateTime.now());
         produtoPersist.setDescricao("O processador mais rápido.");
         produtoPersist.setPreco(new BigDecimal(2000));
 
@@ -34,6 +36,7 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
 
         // produtoMerge.setId(6); NÃO USADO COM estratégia IDENTITY no id
         produtoMerge.setNome("Notebook Dell");
+        produtoMerge.setDataCriacao(LocalDateTime.now());
         produtoMerge.setDescricao("O melhor da categoria.");
         produtoMerge.setPreco(new BigDecimal(2000));
 
@@ -54,6 +57,7 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
 
         // produto.setId(4); NÃO USADO COM estratégia IDENTITY no id
         produto.setNome("Microfone Rode Videmic");
+        produto.setDataCriacao(LocalDateTime.now());
         produto.setDescricao("A melhor qualidade de som.");
         produto.setPreco(new BigDecimal(1000));
 
@@ -87,6 +91,7 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
 
         produto.setId(1);
         produto.setNome("Kindle Paperwhite");
+        produto.setDataCriacao(LocalDateTime.now());
         produto.setDescricao("Conheça o novo Kindle.");
         produto.setPreco(new BigDecimal(599));
 
@@ -121,6 +126,7 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
 
         // produto.setId(2); Não é necessário na asserção para operação de remoção.
         produto.setNome("Câmera Canon");
+        produto.setDataCriacao(LocalDateTime.now());
         produto.setDescricao("A melhor definição para suas fotos.");
         produto.setPreco(new BigDecimal(5000));
 
