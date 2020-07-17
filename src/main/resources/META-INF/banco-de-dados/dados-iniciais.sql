@@ -11,6 +11,6 @@ insert into item_pedido (pedido_id, produto_id, preco_produto, quantidade) value
 insert into item_pedido (pedido_id, produto_id, preco_produto, quantidade) values (1, 3, 15.0, 5);
 insert into item_pedido (pedido_id, produto_id, preco_produto, quantidade) values (2, 1, 499.0, 1);
 
-insert into pagamento_cartao (pedido_id, status, numero_cartao) values (2, 'PROCESSANDO', '123');
+insert into pagamento (tipo_pagamento, pedido_id, status, numero_cartao, codigo_barras) values ('boleto', 2, 'PROCESSANDO', '', '75345985412365479000001');
 
 insert into categoria (id, nome) values (1, 'Eletrônicos');
