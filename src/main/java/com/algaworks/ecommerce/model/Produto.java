@@ -13,7 +13,9 @@ import java.util.List;
 @Getter @Setter
 @EntityListeners({ GenericoListener.class })
 @Entity
-@Table(name = "produto")
+@Table(name = "produto",
+        uniqueConstraints = { @UniqueConstraint(name = "unq_nome", columnNames = { "nome" }) },
+        indexes = { @Index(name = "idx_nome", columnList = "nome") })
 public class Produto extends EntidadeBaseInteger {
 
     /* updatable = false garante que esse valor nunca mais seja atualizado */
