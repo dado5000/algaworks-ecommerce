@@ -29,6 +29,7 @@ public class Produto extends EntidadeBaseInteger {
     @Column(length = 100, nullable = false)
     private String nome;
 
+    @Lob // campo maior que varchar(255) para textos grandes
     private String descricao;
 
     private BigDecimal preco;
