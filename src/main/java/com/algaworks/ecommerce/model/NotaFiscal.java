@@ -18,7 +18,8 @@ public class NotaFiscal extends EntidadeBaseInteger {
 
     @MapsId /* @MapsId determina que sua PK será a própria PK de seu relacionamento  */
     @OneToOne(optional = false) // Não é opcianal, sempre que gerar uma nota fiscal deverá haver um pedido
-    @JoinColumn(name = "pedido_id") // DONO DA RELAÇÃO Owner
+    @JoinColumn(name = "pedido_id", nullable = false,
+        foreignKey = @ForeignKey(name = "fk_nota_fiscal_pedido")) // DONO DA RELAÇÃO Owner
     private Pedido pedido;
 
     @Lob
