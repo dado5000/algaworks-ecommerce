@@ -37,8 +37,9 @@ public class Produto extends EntidadeBaseInteger {
     @ManyToMany
     @JoinTable(name = "produto_categoria",
             joinColumns = @JoinColumn(name = "produto_id"),
+                foreignKey = @ForeignKey(name = "fk_produto_categoria_produto"),
             inverseJoinColumns = @JoinColumn (name = "categoria_id", nullable = false,
-            foreignKey = @ForeignKey(name = "fk_produto_categoria_categoria")))
+                foreignKey = @ForeignKey(name = "fk_produto_categoria_categoria")))
     private List<Categoria> categorias;
 
     @OneToOne(mappedBy = "produtoId")
