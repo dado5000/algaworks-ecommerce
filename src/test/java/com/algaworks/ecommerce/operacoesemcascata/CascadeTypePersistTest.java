@@ -12,6 +12,31 @@ import java.util.Arrays;
 
 public class CascadeTypePersistTest extends EntityManagerTest {
 
+    //@Test
+    public void persistirProdutoComCategoria() {
+
+        Categoria categoria = new Categoria();
+        categoria.setNome("Hardware");
+
+        Produto produto = new Produto();
+        produto.setDataCriacao(LocalDateTime.now());
+        produto.setNome("SSD 120GB A400 - KINGSTON");
+        produto.setDescricao("10x Mais rápido que HDs comuns");
+        produto.setPreco(BigDecimal.valueOf(129.90));
+        produto.setCategorias(Arrays.asList(categoria)); // CascadeType.PERSIST
+
+        entityManager.getTransaction().begin();
+        entityManager.persist(produto);
+        entityManager.getTransaction().commit();
+
+        entityManager.clear();
+
+        Produto produtoVerificacao = entityManager.find(Produto.class, produto.getId());
+        Categoria categoriaVerificacao = entityManager.find(Categoria.class, categoria.getId());
+        Assert.assertNotNull(produtoVerificacao);
+        Assert.assertNotNull(categoriaVerificacao);
+    }
+
    // @Test
     public void persistirPedidoComItens() {
         Cliente cliente = entityManager.find(Cliente.class, 1);
@@ -39,8 +64,8 @@ public class CascadeTypePersistTest extends EntityManagerTest {
         entityManager.clear();
 
         Pedido pedidoVerificacao = entityManager.find(Pedido.class, pedido.getId());
-        Assert.assertNotNull(pedido);
-        Assert.assertFalse(pedido.getItensPedido().isEmpty());
+        Assert.assertNotNull(pedidoVerificacao);
+        Assert.assertFalse(pedidoVerificacao.getItensPedido().isEmpty());
 
     }
 
@@ -69,7 +94,7 @@ public class CascadeTypePersistTest extends EntityManagerTest {
         entityManager.clear();
 
         Pedido pedidoVerificacao = entityManager.find(Pedido.class, pedido.getId());
-        Assert.assertNotNull(pedido);
+        Assert.assertNotNull(pedidoVerificacao);
     }
 
    // @Test
@@ -93,6 +118,6 @@ public class CascadeTypePersistTest extends EntityManagerTest {
         entityManager.clear();
 
         Cliente clienteVerificacao = entityManager.find(Cliente.class, cliente.getId());
-        Assert.assertNotNull(cliente);
+        Assert.assertNotNull(clienteVerificacao);
     }
 }
