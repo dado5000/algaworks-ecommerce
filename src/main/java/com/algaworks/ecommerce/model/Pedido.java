@@ -50,6 +50,7 @@ public class Pedido extends EntidadeBaseInteger {
     /* Operações em cascata são operações executadas em apenas uma entidade que refletem em outra
     * cascade = CascadeType.PERSIST. Sempre que um novo pedido for persistido os itensPedido tbm serão persistidos
     * cascade = CascadeType.MERGE. Sempre que atualizar um pedido o itemPedido será atualizado
+    * orphanRemoval = true, remove todos os relacionamentos filhos de pedido, no caso os itens do pedido
     * */
     @OneToMany(mappedBy = "pedidoid")
     private List<ItemPedido> itensPedido;
